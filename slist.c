@@ -10,3 +10,19 @@ uint32_t  slist_length (const Slist *list){
   assert (list ! = NULL);
   return list->length;
  }
+  
+static Node*      _get_new_node_(int32_t val){
+  
+  Node *newnode = (Node*)malloc(sizeof(Node));
+  newnode->data = val;
+  newnode->next = NULL;
+  
+  return newnode;
+}
+  
+Slist*    slist_addnode_head(Slist *list, int32_t val){
+  
+  Node *new_node = get_new_node_(val);
+  new_node->next = list->head;
+  list->head = new_node;
+}
