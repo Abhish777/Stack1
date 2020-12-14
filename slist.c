@@ -25,4 +25,11 @@ Slist*    slist_addnode_head(Slist *list, int32_t val){
   Node *new_node = get_new_node_(val);
   new_node->next = list->head;
   list->head = new_node;
+  if(list->tail == NULL){
+      list->tail = new_node;
+  }
+  ++list->length;
+  
+  assert( (list->length == 1 && list->head == list->tail)) || (list->length > 1 && list->head!= list->tail);
+    
 }
